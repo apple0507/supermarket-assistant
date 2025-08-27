@@ -1,0 +1,304 @@
+/* 基础样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+}
+
+/* 主容器 - 适配移动端 */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 10px;
+  max-width: 100vw;
+}
+
+.App h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+/* 聊天容器 - 固定大小，适配手机 */
+.chatbot {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  height: 70vh;
+  min-height: 500px;
+  max-height: 650px;
+  overflow: hidden;
+}
+
+/* 消息列表区域 - 固定高度，可滚动 */
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* 自定义滚动条样式 */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 transparent;
+}
+
+.message-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.message-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.message-list::-webkit-scrollbar-thumb {
+  background-color: #cbd5e0;
+  border-radius: 3px;
+}
+
+/* 消息样式 - 移动端优化 */
+.message {
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 85%;
+  word-wrap: break-word;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* 全部消息左对齐 */
+.message {
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* 用户消息放右侧 */
+.message.user {
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right; /* 如不需要右对齐文本可删掉 */
+}
+
+/* 助手消息保持左侧（可参考） */
+.message.assistant {
+  align-self: flex-start;
+  margin-right: auto;
+  text-align: left;
+}
+
+.message small {
+  font-size: 11px;
+  opacity: 0.7;
+  display: block;
+  margin-top: 4px;
+}
+
+/* 消息中的图片 */
+.message-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 12px;
+  margin: 5px 0;
+  object-fit: cover;
+}
+
+/* 输入区域 - 底部固定，优化布局 */
+.message-input {
+  padding: 20px;
+  border-top: 1px solid #e2e8f0;
+  background: white;
+  border-radius: 0 0 15px 15px;
+}
+
+.message-input form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.input-container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 16px 50px 16px 20px; /* 右侧留出空间给相机按钮 */
+  border: 2px solid #d1d5db;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.2s;
+  min-height: 50px;
+}
+
+.message-input input:focus {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+.camera-button {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.camera-button:hover {
+  background-color: rgba(30, 58, 138, 0.1);
+  transform: scale(1.1);
+}
+
+.send-button {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  min-height: 50px;
+  margin-left: auto;
+}
+
+.send-button:hover {
+  background-color: #1e40af;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+}
+
+/* 移除原来的上传按钮区域样式 */
+.image-upload {
+  display: none;
+}
+
+.upload-button {
+  display: none;
+}
+
+/* 状态提示 */
+.chatbot p {
+  text-align: center;
+  padding: 10px 15px;
+  margin: 0;
+  font-size: 12px;
+  background: #eff6ff;
+  border-top: 1px solid #e0f2fe;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+  .App {
+    padding: 5px;
+  }
+  
+  .App h1 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .chatbot {
+    height: 75vh;
+    min-height: 450px;
+    border-radius: 10px;
+  }
+  
+  .message-list {
+    padding: 10px;
+  }
+  
+  .message {
+    font-size: 13px;
+    padding: 10px 14px;
+    max-width: 90%;
+  }
+  
+  .message-input {
+    padding: 15px;
+  }
+  
+  .message-input input {
+    padding: 12px 50px 12px 16px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+  
+  .send-button {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+  
+  .camera-button {
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 320px) {
+  .chatbot {
+    height: 80vh;
+    min-height: 400px;
+  }
+  
+  .message {
+    max-width: 95%;
+  }
+  
+  .message-input form {
+    gap: 8px;
+  }
+}
+
+/* 横屏模式优化 */
+@media (orientation: landscape) and (max-height: 500px) {
+  .chatbot {
+    height: 85vh;
+    min-height: 350px;
+  }
+  
+  .App h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.message.assistant,
+.message.assistant p,
+.message.assistant small {
+  text-align: left !important;
+}

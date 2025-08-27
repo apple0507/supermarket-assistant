@@ -1,0 +1,38 @@
+{
+  "name": "supermarket-assistant",
+  "version": "1.0.0",
+  "description": "A supermarket shopping assistant that provides real-time product photos, information, and translations.",
+  "main": "src/main.tsx",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "axios": "^1.11.0",
+    "i18next": "^21.6.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.8.5",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^12.1.2",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.4.3",
+    "vite": "^7.1.3"
+  },
+  "keywords": [
+    "supermarket",
+    "shopping",
+    "assistant",
+    "chatbot",
+    "react"
+  ],
+  "author": "DAN WANG",
+  "license": "MIT"
+}
