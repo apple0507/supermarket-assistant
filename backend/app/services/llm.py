@@ -5,9 +5,9 @@ from collections import defaultdict
 from typing import Dict, List, Any
 
 # Azure OpenAI 配置
-AZURE_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT", "https://test-understand-images.openai.azure.com/")
+AZURE_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT", "ENDPOINT")
 AZURE_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o")
-AZURE_API_KEY = os.getenv("AZURE_OPENAI_API_KEY", "9XkEuaS5pqxayy6iMVBoMEcqEcOOoYWZxbTv5AfFOyoDBMWqu57cJQQJ99BDACi0881XJ3w3AAABACOGqWXx")
+AZURE_API_KEY = os.getenv("AZURE_OPENAI_API_KEY", "KEY")
 AZURE_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview")
 
 _STORE: Dict[str, Dict[str, Any]] = defaultdict(lambda: {"summary": "", "turns": []})
